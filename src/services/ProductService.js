@@ -125,7 +125,6 @@ const deleteProduct = (id) => {
 const getAllProduct = (limit, page, sort, filter) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("okasdiaosd");
       const totalProduct = await Product.count();
       let allProduct = [];
       if (filter) {

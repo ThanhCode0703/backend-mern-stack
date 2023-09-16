@@ -63,7 +63,6 @@ const loginUser = (userLogin) => {
         id: checkUser.id,
         isAdmin: checkUser.isAdmin,
       });
-      console.log("như qq");
 
       const refresh_token = await generalRefreshToken({
         id: checkUser.id,

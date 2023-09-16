@@ -50,7 +50,6 @@ const loginUser = async (req, res) => {
       });
     }
     const response = await UserService.loginUser(req.body);
-    console.log("OK");
 
     const { refresh_token, ...newResponse } = response;
 
@@ -146,7 +145,8 @@ const getDetailsUser = async (req, res) => {
     const response = await UserService.getDetailsUser(userId);
     return res.status(200).json(response);
   } catch (e) {
-    return res.status(404).json({
+    console.log(e);
+    return res.status(200).json({
       message: e,
     });
   }

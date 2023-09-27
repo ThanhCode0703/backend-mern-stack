@@ -14,7 +14,7 @@ const createUser = (newUser) => {
       if (checkUser !== null) {
         resolve({
           status: "OK",
-          message: "Emai đã tồn tại",
+          message: "Email đã tồn tại",
         });
       }
       const hashPass = bcrypt.hashSync(password, 10);
@@ -28,7 +28,7 @@ const createUser = (newUser) => {
       if (createUser) {
         resolve({
           status: "OK",
-          messsage: "Create success!!",
+          message: "Create success!!",
           data: createUser,
         });
       }
@@ -112,7 +112,7 @@ const deleteUser = (id) => {
       const checkUser = await User.findOne({
         _id: id,
       });
-      console.log("checkUser", checkUser);
+
       if (checkUser === null) {
         resolve({
           status: "ERR",

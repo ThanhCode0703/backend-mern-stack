@@ -103,7 +103,7 @@ const deleteProduct = (id) => {
       const checkProduct = await Product.findOne({
         _id: id,
       });
-      console.log("checkProduct", checkProduct);
+
       if (checkProduct === null) {
         resolve({
           status: "ERR",
@@ -125,6 +125,7 @@ const deleteProduct = (id) => {
 const getAllProduct = (limit, page, sort, filter) => {
   return new Promise(async (resolve, reject) => {
     try {
+      console.logs(limit);
       const totalProduct = await Product.count();
       let allProduct = [];
       if (filter) {

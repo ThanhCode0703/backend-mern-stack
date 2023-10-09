@@ -6,12 +6,12 @@ const createProduct = (newProduct) => {
   return new Promise(async (resolve, reject) => {
     const {
       name,
-      image,
       type,
       price,
-      countInStock,
-      rating,
       description,
+      rating,
+      countInStock,
+      image,
       discount,
     } = newProduct;
     try {
@@ -26,12 +26,12 @@ const createProduct = (newProduct) => {
       }
       const createProduct = await Product.create({
         name,
-        image,
         type,
         price,
-        countInStock,
-        rating,
         description,
+        rating,
+        countInStock,
+        image,
         discount,
       });
       if (createProduct) {
@@ -73,23 +73,22 @@ const updateProduct = (id, data) => {
     }
   });
 };
-
-const getDetailsProduct = (id) => {
+const getDetailsProduct = (id, data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const product = await Product.findOne({
+      const checkerProduct = await Product.findOne({
         _id: id,
       });
-      if (product === null) {
+      if (checkerProduct === null) {
         resolve({
-          status: "ERR",
-          message: "The product is not defined",
+          status: "OK",
+          message: "Sản phẩm không tồn tại",
         });
       }
       resolve({
         status: "OK",
-        message: "Details product success",
-        data: product,
+        message: "Lấy thông tin sản phẩm thành công",
+        data: checkerProduct,
       });
     } catch (e) {
       reject(e);

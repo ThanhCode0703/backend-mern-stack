@@ -10,6 +10,12 @@ router.delete(
   authMiddleware,
   ProductController.deleteProduct
 );
+router.post(
+  "/delete-multiple-product",
+  authMiddleware,
+  ProductController.deleteMultipleProduct
+);
+router.get("/get-all-type", ProductController.getAllType);
 router.get("/getAll", ProductController.getAllProduct);
 router.get("/get-details/:id", ProductController.getDetailsProduct);
 

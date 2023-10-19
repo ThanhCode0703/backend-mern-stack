@@ -131,6 +131,20 @@ const deleteUser = (id) => {
   });
 };
 
+const deleteMultipleUser = (ids) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await User.deleteMany({ _id: ids });
+      resolve({
+        status: "OK",
+        message: "Delete Multiple user success",
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 const getAllUser = () => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -174,6 +188,7 @@ module.exports = {
   loginUser,
   updateUser,
   deleteUser,
+  deleteMultipleUser,
   getAllUser,
   getDetailsUser,
 };

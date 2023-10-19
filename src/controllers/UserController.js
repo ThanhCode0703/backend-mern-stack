@@ -123,11 +123,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const deleteMultipleUser = async (req, res) => {
+  try {
+    const ids = req.body;
+    if (!ids) {
+      return res.status(200).json({
+        status: "ERR",
+        message: "The ids user is required",
+      });
+    }
+    const response = await UserService.deleteMultipleUser(ids);
+    return res.status(200).json(response);
+  } catch (e) {
+    return res.status(404).json({
+      message: e,
+    });
+  }
+};
+
 const getAllUser = async (req, res) => {
   try {
     const response = await UserService.getAllUser();
     return res.status(200).json(response);
   } catch (e) {
+    console.log(e);
     return res.status(404).json({
       message: e,
     });
@@ -177,6 +196,7 @@ module.exports = {
   logoutUser,
   updateUser,
   deleteUser,
+  deleteMultipleUser,
   getAllUser,
   getDetailsUser,
   refreshToken,

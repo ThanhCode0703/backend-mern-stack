@@ -4,15 +4,16 @@ dotenv.config();
 
 const authMiddleware = (req, res, next) => {
   const token = req.headers.token.split(" ")[1];
+
   jwt.verify(token, process.env.SECRET_KEY, function (err, user) {
     if (err) {
-      return res.status(404).json({
+      return res.status(200).json({
         message: err,
         status: "ERR",
       });
     }
 
-    if (user.isAdmin) {
+    if (user?.isAdmin) {
       next();
     } else {
       return res.status(404).json({

@@ -11,6 +11,12 @@ router.post("/sign-in", userController.loginUser);
 router.post("/log-out", userController.logoutUser);
 router.post("/update-user/:id", authUserMiddleWare, userController.updateUser);
 router.delete("/delete-user/:id", authMiddleware, userController.deleteUser);
+// :id lấy trên đường dẫn
+router.post(
+  "/delete-multiple-user",
+  authMiddleware,
+  userController.deleteMultipleUser
+);
 router.get("/getAll", authMiddleware, userController.getAllUser);
 router.get(
   "/get-details/:id",

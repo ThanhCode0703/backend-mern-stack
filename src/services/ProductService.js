@@ -209,6 +209,23 @@ const getAllType = () => {
     }
   });
 };
+// const getDetailsAllProductByType =(type) =>{
+//   return new Promise (async (resolve, reject) => {
+//     try {
+//       if(!type){
+//         resolve({
+//           status: 'ERR',
+//           message: "Missing parameter"
+//         })
+//       }
+//       else{
+//         coca.getDetailsAllProductByType
+//       }
+//     }catch(e){
+//       reject(e)
+//     }
+//   })
+// }
 module.exports = {
   createProduct,
   updateProduct,

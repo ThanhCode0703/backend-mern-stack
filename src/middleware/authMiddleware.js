@@ -40,7 +40,7 @@ const authUserMiddleWare = (req, res, next) => {
     } else {
       return res.status(404).json({
         message: "The authemtication",
-        status: "ERROR",
+        status: "ERR",
       });
     }
   });

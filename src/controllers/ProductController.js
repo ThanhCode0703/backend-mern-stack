@@ -107,6 +107,7 @@ const deleteMultipleProduct = async (req, res) => {
   } catch (e) {
     return res.status(404).json({
       message: e,
+      status: "ERR",
     });
   }
 };
@@ -125,6 +126,7 @@ const getAllProduct = async (req, res) => {
   } catch (e) {
     return res.status(200).json({
       message: e.toString(),
+      status: "ERR",
     });
   }
 };
@@ -133,8 +135,20 @@ const getAllType = async (req, res) => {
     const response = await ProductService.getAllType();
     return res.status(200).json(response);
   } catch (e) {
-    return res.status(404).json({
+    return res.status(200).json({
       message: e,
+      status: "ERR",
+    });
+  }
+};
+const getDetailsAllProductByType = async (req, res) => {
+  try {
+    const response = await ProductService.getDetailsAllProductByType();
+    return res.status(200).json(response);
+  } catch (e) {
+    return res.status(200).json({
+      message: e,
+      status: "ERR",
     });
   }
 };
@@ -146,4 +160,5 @@ module.exports = {
   deleteProduct,
   deleteMultipleProduct,
   getAllType,
+  getDetailsAllProductByType,
 };

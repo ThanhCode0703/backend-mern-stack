@@ -18,5 +18,6 @@ router.post(
 router.get("/get-all-type", ProductController.getAllType);
 router.get("/getAll", ProductController.getAllProduct);
 router.get("/get-details/:id", ProductController.getDetailsProduct);
+// router.get("/get-details-all-product-by-type", ProductController.getDetailsAllProductByType);
 
 module.exports = router;

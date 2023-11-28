@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
     const response = await UserService.loginUser(req.body);
 
     const { refresh_token, ...newResponse } = response;
-
+    // KHÔNG ĐẨY ĐC LÊN COOKIE
     res.cookie("refresh_token", refresh_token, {
       httpOnly: true,
       secure: false, // Sử dụng 'true' nếu bạn sử dụng HTTPS
@@ -174,7 +174,7 @@ const getDetailsUser = async (req, res) => {
 
 const refreshToken = async (req, res) => {
   try {
-    let token = req.cookie.refresh_token;
+    let token = req.headers.refresh_token.split(" ")[1];
     if (!token) {
       return res.status(200).json({
         status: "ERR",

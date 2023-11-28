@@ -1,6 +1,6 @@
 const Order = require("../models/OrderProduct");
 const Product = require("../models/ProductModel");
-// const EmailService = require("../services/EmailService");
+const EmailService = require("../services/EmailService");
 //tạo hóa Đơn
 // tạo sản phẩm
 const createOrder = (newOrder) => {
@@ -77,14 +77,14 @@ const createOrder = (newOrder) => {
           paidAt,
         });
         if (createOrder) {
-          // await EmailService.sendEmailCreateOrder(
-          //   email,
-          //   totalPrice,
-          //   address,
-          //   shippingPrice,
-          //   orderItems,
-          //   paymentMethod
-          // );
+          await EmailService.sendEmailCreateOrder(
+            email,
+            totalPrice,
+            address,
+            shippingPrice,
+            orderItems,
+            paymentMethod
+          );
           resolve({
             status: "OK",
             message: "Tạo hóa đơn thành công",
@@ -95,6 +95,7 @@ const createOrder = (newOrder) => {
         status: "OK",
         message: "Đặt hàng thành công",
       });
+      resolve({});
     } catch (e) {
       reject(e);
     }

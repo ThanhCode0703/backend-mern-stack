@@ -13,6 +13,7 @@ const createProduct = (newProduct) => {
       countInStock,
       image,
       discount,
+      sold,
     } = newProduct;
     try {
       const checkProduct = await Product.findOne({
@@ -33,6 +34,7 @@ const createProduct = (newProduct) => {
         countInStock,
         image,
         discount,
+        sold,
       });
       if (createProduct) {
         resolve({

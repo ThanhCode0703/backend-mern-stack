@@ -8,7 +8,7 @@ const generalAccessToken = async (payload) => {
       ...payload,
     },
     process.env.SECRET_KEY,
-    { expiresIn: "30s" } // tồn tại
+    { expiresIn: "1h" } // tồn tại
   );
 
   return access_token;
